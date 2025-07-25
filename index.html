@@ -8,30 +8,50 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
+    <!-- Interactive Canvas Background -->
+    <canvas id="interactive-background"></canvas>
 
     <header class="main-header">
         <div class="logo">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 8V32" stroke="#FF4F00" stroke-width="5" stroke-linecap="round"/>
-              <path d="M10 12H20C24.4183 12 28 15.5817 28 20C28 24.4183 24.4183 28 20 28H18" stroke="#FF4F00" stroke-width="5" stroke-linecap="round"/>
-              <path d="M20 28L28 32" stroke="#FF4F00" stroke-width="5" stroke-linecap="round"/>
-              <circle cx="20" cy="20" r="3" fill="#FF4F00"/>
-            </svg>
-            <span>Raislip</span>
+            <a href="#">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 8V32" stroke="#FF4F00" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M10 12H20C24.4183 12 28 15.5817 28 20C28 24.4183 24.4183 28 20 28H18" stroke="#FF4F00" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M20 28L28 32" stroke="#FF4F00" stroke-width="5" stroke-linecap="round"/>
+                  <circle cx="20" cy="20" r="3" fill="#FF4F00"/>
+                </svg>
+                <span>Raislip</span>
+            </a>
         </div>
-        <nav>
+        <nav class="desktop-nav">
             <ul>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#approach">Approach</a></li>
             </ul>
         </nav>
-        <a href="#contact" class="cta-button-outline">Contact Us</a>
+        <a href="#contact" class="cta-button-outline desktop-nav">Contact Us</a>
+        
+        <!-- Hamburger Menu Button -->
+        <button class="hamburger-menu" aria-label="Open navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
 
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay">
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#approach">Approach</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+    </div>
+
     <main>
+        <!-- Hero Section -->
         <section class="hero-section">
             <div class="hero-grid">
                 <div class="hero-text">
@@ -40,36 +60,47 @@
                     <p class="subtitle">We architect and build robust, scalable systems to solve complex challenges and drive tangible business outcomes.</p>
                     <a href="#services" class="cta-button-solid">Explore Our Services</a>
                 </div>
-                <div class="hero-visual">
-                    <div class="shape1"></div>
-                    <div class="shape2"></div>
-                </div>
+                <!-- Visual element removed to emphasize canvas background -->
             </div>
         </section>
 
+        <!-- Services Section -->
         <section id="services" class="services-section">
             <div class="container">
                 <h2>A Foundation for a Smarter Future.</h2>
                 <div class="services-grid">
                     <div class="service-card">
-                        <i class="fas fa-cloud"></i>
                         <h3>Cloud Architecture</h3>
                         <p>Scalable, secure, and optimized cloud infrastructure on AWS, GCP, and Azure.</p>
                     </div>
                     <div class="service-card">
-                        <i class="fas fa-project-diagram"></i>
                         <h3>Data Engineering</h3>
                         <p>Robust data pipelines and warehousing to transform data into your most valuable asset.</p>
                     </div>
                     <div class="service-card">
-                        <i class="fas fa-brain"></i>
                         <h3>Applied AI</h3>
                         <p>Custom machine learning models to automate processes, generate predictions, and unlock new capabilities.</p>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <!-- Approach Section -->
+        <section id="approach" class="approach-section">
+             <div class="container approach-grid">
+                <div class="approach-text">
+                    <p class="tagline">OUR PROCESS</p>
+                    <h2>From Insight to Impact.</h2>
+                    <ul>
+                        <li><span>01</span><strong>Discovery:</strong> Immersive sessions to diagnose the core business problem.</li>
+                        <li><span>02</span><strong>Design:</strong> Architecting a bespoke, efficient, and scalable solution blueprint.</li>
+                        <li><span>03</span><strong>Delivery:</strong> Agile development, deployment, and integration with a focus on measurable results.</li>
+                    </ul>
+                </div>
+             </div>
+        </section>
 
+        <!-- Final CTA Section -->
         <section id="contact" class="final-cta-section">
             <div class="container">
                 <h2>Let's Build What's Next.</h2>
@@ -82,6 +113,153 @@
     <footer class="main-footer">
         <p>© 2025 Raislip. Jaipur, Rajasthan.</p>
     </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- Hamburger Menu Logic ---
+    const hamburger = document.querySelector('.hamburger-menu');
+    const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-overlay a');
+    const body = document.body;
+
+    const toggleMenu = () => {
+        hamburger.classList.toggle('active');
+        mobileOverlay.classList.toggle('active');
+        body.classList.toggle('no-scroll'); // Prevents scrolling when menu is open
+    };
+
+    hamburger.addEventListener('click', toggleMenu);
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', toggleMenu);
+    });
+
+
+    // --- Interactive Canvas Background Logic ---
+    const canvas = document.getElementById('interactive-background');
+    const ctx = canvas.getContext('2d');
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    let mouse = { x: null, y: null };
+    const interactionRadius = 200;
+    const dotSpacing = 35;
+    const dots = [];
+
+    // Colors
+    const dotColor = 'rgba(255, 79, 0, 0.2)'; // Faint orange for dots
+    const lineColor = 'rgba(255, 79, 0, 0.08)'; // Even fainter for lines
+
+    // Update mouse position and the CSS variable for the gradient
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.x;
+        mouse.y = e.y;
+        body.style.setProperty('--mouse-x', `${e.clientX}px`);
+        body.style.setProperty('--mouse-y', `${e.clientY}px`);
+    });
+     window.addEventListener('mouseout', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
+
+    // Handle window resizing
+    window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        createDots(); // Re-create dots for the new size
+    });
+
+    class Dot {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.baseRadius = 1;
+            this.radius = this.baseRadius;
+            this.targetRadius = this.baseRadius;
+            this.speed = 0.1; // Animation speed
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = dotColor;
+            ctx.fill();
+        }
+
+        update() {
+            // Smoothly animate radius towards its target
+            this.radius += (this.targetRadius - this.radius) * this.speed;
+
+            // Calculate distance to mouse
+            if (mouse.x !== null) {
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                // If mouse is close, increase the target radius
+                if (distance < interactionRadius) {
+                    this.targetRadius = this.baseRadius + (interactionRadius - distance) / 15;
+                } else {
+                    this.targetRadius = this.baseRadius;
+                }
+            } else {
+                 this.targetRadius = this.baseRadius;
+            }
+        }
+    }
+
+    function createDots() {
+        dots.length = 0; // Clear existing dots
+        for (let x = 0; x < width; x += dotSpacing) {
+            for (let y = 0; y < height; y += dotSpacing) {
+                dots.push(new Dot(x, y));
+            }
+        }
+    }
+
+    function connectDots() {
+        for (let i = 0; i < dots.length; i++) {
+            for (let j = i; j < dots.length; j++) {
+                const dx = dots[i].x - dots[j].x;
+                const dy = dots[i].y - dots[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                // If dots are close enough and near the mouse, connect them
+                if (distance < dotSpacing * 1.5) {
+                     const mouseDx = mouse.x - dots[i].x;
+                     const mouseDy = mouse.y - dots[i].y;
+                     const mouseDistance = Math.sqrt(mouseDx*mouseDx + mouseDy*mouseDy);
+                    
+                     if(mouseDistance < interactionRadius * 1.5){
+                        ctx.beginPath();
+                        ctx.moveTo(dots[i].x, dots[i].y);
+                        ctx.lineTo(dots[j].x, dots[j].y);
+                        ctx.strokeStyle = lineColor;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                     }
+                }
+            }
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+        dots.forEach(dot => {
+            dot.update();
+            dot.draw();
+        });
+        if (mouse.x !== null) {
+            connectDots();
+        }
+        requestAnimationFrame(animate);
+    }
+
+    createDots();
+    animate();
+});
+</script>
 
 </body>
 </html>

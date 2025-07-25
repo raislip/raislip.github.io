@@ -3,63 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raislip Technologies | Cloud, Data & AI Consulting</title>
+    <title>Raislip Technologies | Cloud, Data & AI Solutions</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
 
     <header class="main-header">
+        <div class="logo">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 8V32" stroke="#0d6efd" stroke-width="4" stroke-linecap="round"/>
+              <path d="M12 15C18.835 15 24.5 20.165 24.5 27" stroke="#0d6efd" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="28" cy="11" r="2" fill="#0d6efd"/>
+            </svg>
+            <span>Raislip Technologies</span>
+        </div>
         <nav>
-            <div class="logo">Raislip Technologies</div>
             <ul>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#approach">Our Approach</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#approach">Approach</a></li>
             </ul>
-            <a href="#contact" class="cta-button">Book a Consultation</a>
         </nav>
+        <a href="#contact" class="cta-button-outline">Contact Us</a>
     </header>
 
     <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>From Complex Data to Clear Solutions.</h1>
-                <p>We are a Cloud, Data, and AI consultancy that thrives on solving your most demanding business challenges. Let's build what's next, together.</p>
-                <a href="#contact" class="cta-button-large">Start Your Project</a>
+        <section class="hero-section">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <p class="tagline">RAISLIP TECHNOLOGIES</p>
+                    <h1>High-Performance Cloud, Data & AI Solutions.</h1>
+                    <p class="subtitle">We architect and build robust, scalable systems to solve complex challenges and drive tangible business outcomes.</p>
+                    <a href="#services" class="cta-button-solid">Explore Our Services</a>
+                </div>
+                <div class="hero-visual">
+                    <div class="shape1"></div>
+                    <div class="shape2"></div>
+                </div>
             </div>
-            <div class="hero-visual"></div>
         </section>
 
         <section id="services" class="services-section">
-            <h2>Our Core Expertise</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-cloud"></i>
-                    <h3>Cloud Solutions</h3>
-                    <p>Architecting and optimizing scalable, secure, and cost-efficient cloud infrastructures on AWS, Azure, and GCP.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-database"></i>
-                    <h3>Data Engineering</h3>
-                    <p>We transform raw data into actionable insights by designing robust data pipelines and building powerful analytics platforms.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-brain"></i>
-                    <h3>AI & Machine Learning</h3>
-                    <p>Leverage the power of artificial intelligence. We develop and deploy custom machine learning models to create intelligent products.</p>
+            <div class="container">
+                <h2>A Foundation for a Smarter Future.</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Cloud Architecture</h3>
+                        <p>Scalable, secure, and optimized cloud infrastructure on AWS, GCP, and Azure.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-project-diagram"></i>
+                        <h3>Data Engineering</h3>
+                        <p>Robust data pipelines and warehousing to transform data into your most valuable asset.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>Applied AI</h3>
+                        <p>Custom machine learning models to automate processes, generate predictions, and unlock new capabilities.</p>
+                    </div>
                 </div>
             </div>
         </section>
-        
-        </main>
 
-    <footer>
-        <p>&copy; 2025 Raislip Technologies. All Rights Reserved.</p>
-        </footer>
+        <section id="contact" class="final-cta-section">
+            <div class="container">
+                <h2>Let's Build What's Next.</h2>
+                <p>Have a project in mind or a complex problem to solve? Reach out to our team.</p>
+                <a href="mailto:contact@raisliptech.com" class="cta-button-light">Get in Touch</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>© 2025 Raislip Technologies. Ruislip, England, UK.</p>
+    </footer>
 
 </body>
 </html>
